@@ -25,6 +25,18 @@
     {
       "enquiry": "javascript query",
       "id": 1
+    },
+    {
+      "enquiry": "javaquery",
+      "id": 2
+    },
+    {
+      "enquiry": "Is my assignment complete?",
+      "id": 3
+    },
+    {
+      "enquiry": "Which is the most paid programming language?",
+      "id": 4
     }
   ]
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Link, Route } from "react-router-dom";
 import Courses from "./Courses";
 import Forms from "./Forms";
-import Enquiries from "./Enquiries";
+import Display from "./Display";
 
 class Routing extends React.Component {
   render() {
@@ -34,7 +34,7 @@ class Routing extends React.Component {
 
           <Route exact path="/" component={Courses}></Route>
           <Route path="/form" component={Forms}></Route>
-          <Route path="/enquiries" component={Enquiries}></Route>
+          <Route path="/enquiries" component={Display}></Route>
         </div>
       </BrowserRouter>
     );

@@ -1,19 +1,12 @@
 import React from "react";
 import CourseView from "./CourseView";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { courseList } from "../actions";
 
-const url = "http://localhost:8900/courses";
-
-class Posts extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      topics: ""
-    };
-  }
+class Courses extends React.Component {
   componentDidMount() {
-    fetch(url, { method: "GET" })
-      .then(res => res.json())
-      .then(data => this.setState({ topics: data }));
+    this.props.dispatch(courseList());
   }
 
   render() {
@@ -22,8 +15,7 @@ class Posts extends React.Component {
         <div className="card-header">
           <div className="card-body">
             <div className="jumbotron">
-              {console.log(this.state.topics)}
-              <CourseView topicData={this.state.topics} />
+              <CourseView courseData={this.props.courseData.course} />
             </div>
           </div>
         </div>
@@ -32,4 +24,14 @@ class Posts extends React.Component {
   }
 }
 
-export default Posts;
+function mapStateToProps(state) {
+  console.log(state.courses);
+  return {
+    courseData: state.courses
+  };
+}
+Courses.protoTypes = {
+  dispatch: PropTypes.func
+};
+
+export default connect(mapStateToProps)(Courses);

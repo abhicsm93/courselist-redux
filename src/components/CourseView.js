@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const PostView = props => {
-  const renderTopic = ({ topicData }) => {
-    if (topicData) {
-      console.log(topicData);
-      return topicData.map(item => {
+const CourseView = props => {
+  const renderTopic = ({ courseData }) => {
+    if (courseData) {
+      return courseData.map(item => {
         return (
           <div key={item.id}>
             <h2>{item.name}</h2>
@@ -20,4 +19,4 @@ const PostView = props => {
   return <div>{renderTopic(props)}</div>;
 };
 
-export default PostView;
+export default CourseView;

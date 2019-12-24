@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-
-const url = "http://localhost:8900/enquiries";
+import { updateEnquiry } from "../actions";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 class Forms extends Component {
   constructor(props) {
@@ -13,19 +14,16 @@ class Forms extends Component {
   handleChange(e) {
     this.setState({ data: e.target.value });
   }
+
   addToDB() {
     let data = {
       enquiry: this.state.data
     };
-    fetch(url, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(data)
-    }).then(response => response.json());
+
+    this.props.dispatch(updateEnquiry(data));
+    alert("Enquiry Submitted Successfully");
   }
+
   render() {
     return (
       <div className="jumbotron">
@@ -46,4 +44,11 @@ class Forms extends Component {
   }
 }
 
-export default Forms;
+function mapStateToProps(state) {
+  return { enquiryData: state.enquiries };
+}
+
+Forms.protoTypes = {
+  dispatch: PropTypes.func
+};
+export default connect(mapStateToProps)(Forms);
